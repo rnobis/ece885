@@ -1,8 +1,7 @@
-'''Trains a simple deep NN on the MNIST dataset.
+'''ECE885 Mini-Project 1 Part 2
+Trains a simple deep NN on the MNIST dataset.
 
-Gets to 98.40% test accuracy after 20 epochs
-(there is *a lot* of margin for parameter tuning).
-2 seconds per epoch on a K520 GPU.
+Gets to XX.XX% test accuracy after 10 epochs
 '''
 
 from __future__ import print_function
@@ -18,7 +17,7 @@ from keras.utils import np_utils
 
 batch_size = 128
 nb_classes = 10
-nb_epoch = 20
+nb_epoch = 10
 
 # the data, shuffled and split between train and test sets
 (X_train, y_train), (X_test, y_test) = mnist.load_data()
@@ -38,10 +37,16 @@ Y_test = np_utils.to_categorical(y_test, nb_classes)
 
 #Build neural network model. Input data is 784 = 28 * 28 (image data is 28x28)
 model = Sequential()
-model.add(Dense(512, input_shape=(784,)))
+model.add(Dense(2000, input_shape=(784,)))
 model.add(Activation('relu'))
 model.add(Dropout(0.2))
-model.add(Dense(512))
+model.add(Dense(1000))
+model.add(Activation('relu'))
+model.add(Dropout(0.2))
+model.add(Dense(500))
+model.add(Activation('relu'))
+model.add(Dropout(0.2))
+model.add(Dense(200))
 model.add(Activation('relu'))
 model.add(Dropout(0.2))
 model.add(Dense(10))

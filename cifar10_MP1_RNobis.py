@@ -1,10 +1,8 @@
-#!/usr/bin/env python2
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Feb 14 22:00:46 2017
-Run NN code for MNIST data on CIFAR10 data. 
-@author: rnobis
-"""
+'''ECE885 Mini-Project 1 Part 1
+Trains a simple deep NN on the CIFAR10 dataset.
+
+Gets to XX.XX% test accuracy after 10 epochs
+'''
 
 from __future__ import print_function
 import numpy as np
