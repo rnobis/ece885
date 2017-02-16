@@ -15,7 +15,7 @@ from keras.optimizers import RMSprop
 from keras.utils import np_utils
 
 
-batch_size = 128
+batch_size = 32 #128
 nb_classes = 10
 nb_epoch = 10
 
@@ -37,13 +37,13 @@ Y_test = np_utils.to_categorical(y_test, nb_classes)
 
 #Build neural network model. Input data is 784 = 28 * 28 (image data is 28x28)
 model = Sequential()
-model.add(Dense(1500, input_shape=(784,)))
-model.add(Activation('relu'))
-model.add(Dropout(0.2))
-model.add(Dense(800))
+model.add(Dense(1000, input_shape=(784,)))
 model.add(Activation('relu'))
 model.add(Dropout(0.2))
 model.add(Dense(400))
+model.add(Activation('relu'))
+model.add(Dropout(0.2))
+model.add(Dense(100))
 model.add(Activation('relu'))
 model.add(Dropout(0.2))
 model.add(Dense(10))
