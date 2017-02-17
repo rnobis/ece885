@@ -1,7 +1,7 @@
 '''ECE885 Mini-Project 1 Part 3
 
-Updated mnist_MP_RNobis.py to have a variable learning rate, and see the 
-results.
+Updated mnist_MP1_RNobis.py to have a variable learning rate based on the
+loss function, to see the results.
 '''
 
 from __future__ import print_function
@@ -24,22 +24,19 @@ nb_epoch = 20
 sd=[]
 class LossHistory(cb.Callback):
     def on_train_begin(self, logs={}):
+        #Create array for losses
         self.losses = [1,1]
 
     def on_epoch_end(self, batch, logs={}):
+        #Populate arrays for losses and step decays, print out learning rate
         self.losses.append(logs.get('loss'))
         sd.append(step_decay(len(self.losses)))
-        print('learning rate:', step_decay(len(self.losses)))
-        print('derivative of loss:', 2*np.sqrt((self.losses[-1])))
+        print('\nlearning rate:', step_decay(len(self.losses)))
 
 def step_decay(losses):
-    if float((np.array(temp_history.losses[-1])))<nb_epoch:
-        lrate=0.060*np.exp(np.array(temp_history.losses[-1]))
-        return lrate
-    else:
-        lrate=0.01
-        return lrate
-
+    #Calculate learning rate based on loss function
+    lrate=0.075*np.exp(np.array(temp_history.losses[-1]))
+    return lrate
 
 # the data, shuffled and split between train and test sets
 (X_train, y_train), (X_test, y_test) = mnist.load_data()
@@ -79,13 +76,13 @@ model.compile(loss='categorical_crossentropy',
               optimizer=sgd,
               metrics=['accuracy'])
 
+#Callbacks to run after each epoch
 temp_history = LossHistory()
-lrate = LearningRateScheduler(step_decay)
-callbacks_list = [lrate, temp_history]
+lr = LearningRateScheduler(step_decay)
 
 history = model.fit(X_train, Y_train,
                     batch_size=batch_size, nb_epoch=nb_epoch,
-                    verbose=1, validation_data=(X_test, Y_test), callbacks=callbacks_list)
+                    verbose=1, validation_data=(X_test, Y_test), callbacks=[lr, temp_history])
 score = model.evaluate(X_test, Y_test, verbose=0)
 print('Test score:', score[0])
 print('Test accuracy:', score[1])
