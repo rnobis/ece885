@@ -2,6 +2,7 @@
 Trains a simple deep NN on the MNIST dataset.
 
 Gets to 98.5% test accuracy after 20 epochs
+This file is also used as the baseline for the standard learning rate of 0.1.
 '''
 
 from __future__ import print_function
@@ -52,7 +53,7 @@ model.add(Activation('softmax'))
 
 model.summary()
 
-sgd=SGD(lr=0.1, decay=0.0)
+sgd = SGD(lr=0.1, decay=0.0)
 model.compile(loss='categorical_crossentropy',
               optimizer=sgd,
               metrics=['accuracy'])
