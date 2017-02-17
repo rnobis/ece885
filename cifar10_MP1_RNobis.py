@@ -11,7 +11,7 @@ np.random.seed(1337)  # for reproducibility
 from keras.datasets import cifar10
 from keras.models import Sequential
 from keras.layers.core import Dense, Dropout, Activation
-from keras.optimizers import RMSprop
+from keras.optimizers import SGD
 from keras.utils import np_utils
 
 batch_size = 32
@@ -51,8 +51,9 @@ model.add(Activation('softmax'))
 
 model.summary()
 
+sgd=SGD(lr=0.1, decay=0.0)
 model.compile(loss='categorical_crossentropy',
-              optimizer=RMSprop(),
+              optimizer=sgd,
               metrics=['accuracy'])
 
 history = model.fit(X_train, Y_train,
