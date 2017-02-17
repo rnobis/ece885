@@ -1,7 +1,7 @@
 '''ECE885 Mini-Project 1 Part 2
 Trains a simple deep NN on the MNIST dataset.
 
-Gets to XX.XX% test accuracy after 10 epochs
+Gets to 97.46% test accuracy after 10 epochs
 '''
 
 from __future__ import print_function
@@ -22,6 +22,7 @@ nb_epoch = 10
 # the data, shuffled and split between train and test sets
 (X_train, y_train), (X_test, y_test) = mnist.load_data()
 
+#Reshape input data to 784 = 28 * 28 (image data is 28x28)
 X_train = X_train.reshape(60000, 784)
 X_test = X_test.reshape(10000, 784)
 X_train = X_train.astype('float32')
@@ -35,9 +36,9 @@ print(X_test.shape[0], 'test samples')
 Y_train = np_utils.to_categorical(y_train, nb_classes)
 Y_test = np_utils.to_categorical(y_test, nb_classes)
 
-#Build neural network model. Input data is 784 = 28 * 28 (image data is 28x28)
+#Build neural network model. 
 model = Sequential()
-model.add(Dense(1000, input_shape=(784,)))
+model.add(Dense(800, input_shape=(784)))
 model.add(Activation('relu'))
 model.add(Dropout(0.2))
 model.add(Dense(400))

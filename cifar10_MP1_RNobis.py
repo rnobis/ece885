@@ -1,7 +1,7 @@
 '''ECE885 Mini-Project 1 Part 1
 Trains a simple deep NN on the CIFAR10 dataset.
 
-Gets to XX.XX% test accuracy after 10 epochs
+Gets to 40.42% test accuracy after 10 epochs
 '''
 
 from __future__ import print_function
@@ -21,6 +21,7 @@ nb_epoch = 10
 # the data, shuffled and split between train and test sets
 (X_train, y_train), (X_test, y_test) = cifar10.load_data()
 
+#Reshape input data to 3072 = 32 * 32 * 3
 X_train = X_train.reshape(50000, 3072)
 X_test = X_test.reshape(10000, 3072)
 X_train = X_train.astype('float32')
@@ -34,9 +35,9 @@ print(X_test.shape[0], 'test samples')
 Y_train = np_utils.to_categorical(y_train, nb_classes)
 Y_test = np_utils.to_categorical(y_test, nb_classes)
 
-#Build neural network model. Input data is 3072 = 32 * 32 * 3
+#Build neural network model. 
 model = Sequential()
-model.add(Dense(1000, input_shape=(3072,)))
+model.add(Dense(800, input_shape=(3072,)))
 model.add(Activation('relu'))
 model.add(Dropout(0.2))
 model.add(Dense(400))
@@ -55,8 +56,9 @@ model.compile(loss='categorical_crossentropy',
               metrics=['accuracy'])
 
 history = model.fit(X_train, Y_train,
-                    batch_size=batch_size, nb_epoch=nb_epoch,
-                    verbose=1, validation_data=(X_test, Y_test))
+                   batch_size=batch_size, nb_epoch=nb_epoch,
+                   verbose=1, validation_data=(X_test, Y_test))
+
 score = model.evaluate(X_test, Y_test, verbose=0)
 print('Test score:', score[0])
 print('Test accuracy:', score[1])
