@@ -1,7 +1,7 @@
 '''ECE885 Mini-Project 1 Part 2
 Trains a simple deep NN on the MNIST dataset.
 
-Gets to 98.37% test accuracy after 10 epochs
+Gets to 98.5% test accuracy after 20 epochs
 '''
 
 from __future__ import print_function

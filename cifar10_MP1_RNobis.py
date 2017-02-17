@@ -1,7 +1,7 @@
 '''ECE885 Mini-Project 1 Part 1
 Trains a simple deep NN on the CIFAR10 dataset.
 
-Gets to 40.42% test accuracy after 10 epochs
+Gets to 45.85% test accuracy after 20 epochs
 '''
 
 from __future__ import print_function
