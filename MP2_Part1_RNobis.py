@@ -24,8 +24,6 @@ nb_epoch = 20
 # the data, shuffled and split between train and test sets
 (X_train, y_train), (X_test, y_test) = mnist.load_data()
 
-print(len(X_train), 'train sequences')
-print(len(X_test), 'test sequences')
 #Reshape input data to 784 pointwise
 X_train = X_train.reshape(60000, 784, 1)
 X_test = X_test.reshape(10000, 784, 1)

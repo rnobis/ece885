@@ -42,6 +42,8 @@ model.add(LSTM(128, dropout_W=0.2, dropout_U=0.2))  # try using a GRU instead, f
 model.add(Dense(1))
 model.add(Activation('sigmoid'))
 
+model.summary()
+
 # try using different optimizers and different optimizer configs
 model.compile(loss='binary_crossentropy',
               optimizer='adam',
