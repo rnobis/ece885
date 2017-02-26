@@ -26,8 +26,8 @@ nb_epoch = 20
 (X_train, y_train), (X_test, y_test) = mnist.load_data()
 
 #Reshape input data to 784 pointwise
-X_train = X_train.reshape(60000, 784, 1)
-X_test = X_test.reshape(10000, 784, 1)
+X_train = X_train.reshape(60000, 1, 784)
+X_test = X_test.reshape(10000, 1, 784)
 X_train = X_train.astype('float32')
 X_test = X_test.astype('float32')
 X_train /= 255
@@ -47,9 +47,9 @@ model.add(Activation('softmax'))
 
 model.summary()
 
-#sgd = SGD(lr=0.1, decay=0.0)
+sgd = SGD(lr=0.1, decay=0.0)
 model.compile(loss='categorical_crossentropy',
-              optimizer='adam',
+              optimizer=sgd,
               metrics=['accuracy'])
 
 history = model.fit(X_train, Y_train,

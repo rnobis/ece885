@@ -21,7 +21,7 @@ from keras.callbacks import LearningRateScheduler
 
 batch_size = 32 #128
 nb_classes = 10
-nb_epoch = 100
+nb_epoch = 50
 
 sd=[]
 class LossHistory(cb.Callback):
@@ -37,7 +37,7 @@ class LossHistory(cb.Callback):
 
 def step_decay(losses):
     #Calculate learning rate based on loss function
-    lrate=0.075*np.exp(np.array(temp_history.losses[-1]))
+    lrate=0.039894*np.exp(np.array(temp_history.losses[-1]))
     return lrate
 
 # the data, shuffled and split between train and test sets
