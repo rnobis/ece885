@@ -41,7 +41,7 @@ Y_test = np_utils.to_categorical(y_test, nb_classes)
 
 #Build neural network model. 
 model = Sequential()
-model.add(LSTM(100, input_shape=(28,28)))
+model.add(LSTM(50, input_shape=(28,28)))
 model.add(Dense(10))
 model.add(Activation('softmax'))
 
