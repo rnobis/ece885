@@ -1,5 +1,6 @@
 '''ECE885 Mini-Project 2 Part 1
-Trains a LSTM RNN on the MNIST dataset.
+Trains a LSTM RNN on the MNIST dataset using pointwise sequence generation 
+for the input.
 
 Gets to XX.XX% test accuracy after X epochs
 This file is also used as the baseline for the standard learning rate of 0.1.
