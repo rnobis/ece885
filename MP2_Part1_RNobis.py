@@ -20,7 +20,7 @@ from keras.utils import np_utils
 
 batch_size = 32 #128
 nb_classes = 10
-nb_epoch = 20
+nb_epoch = 50
 
 # the data, shuffled and split between train and test sets
 (X_train, y_train), (X_test, y_test) = mnist.load_data()
