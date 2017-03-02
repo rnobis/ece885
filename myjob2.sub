@@ -11,10 +11,10 @@
 #PBS -l mem=4gb
  
 ### you can give your job a name for easier identification
-#PBS -N RNobis_784
+#PBS -N RNobis_784v
  
 ### change to the working directory where your code is located
 cd /mnt/home/nobisrya/ece885
 export PATH=/mnt/research/NN1/anaconda2/bin:$PATH
 ### another example
-ipython MP2_Part1_RNobis.py
+ipython MP2_Part1v_RNobis.py
