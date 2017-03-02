@@ -12,7 +12,7 @@ np.random.seed(1337)  # for reproducibility
 from keras.datasets import mnist
 #from keras.preprocessing import sequence
 from keras.models import Sequential
-from keras.layers.core import Dense, Activation
+from keras.layers.core import Dense, Activation, Dropout
 from keras.optimizers import SGD
 from recurrent_v import LSTMV
 from keras.utils import np_utils
@@ -33,7 +33,8 @@ Y_test = np_utils.to_categorical(y_test, nb_classes)
 
 #Build neural network model. 
 model = Sequential()
-model.add(LSTMV(50, input_shape=(28,28)))
+model.add(LSTMV(50, input_shape=(28,28),activation='tanh',consume_less='mem'))
+model.add(Dropout(0.2))
 model.add(Dense(10))
 model.add(Activation('softmax'))
 
