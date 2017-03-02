@@ -1,6 +1,6 @@
 '''ECE885 Mini-Project 2 Part 2
-Trains a LSTM RNN variant on the MNIST dataset using row wise sequence 
-generation for the input.
+Trains a LSTM RNN variant (no input signal) on the MNIST dataset using row wise 
+sequence generation for the input.
 
 Gets to XX.XX% test accuracy after X epochs
 '''
