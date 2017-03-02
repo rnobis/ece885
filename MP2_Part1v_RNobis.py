@@ -1,6 +1,6 @@
 '''ECE885 Mini-Project 2 Part 1
-Trains a LSTM RNN on the MNIST dataset using pointwise sequence generation 
-for the input.
+Trains a LSTM RNN variant on the MNIST dataset using pointwise sequence 
+generation for the input.
 
 Gets to XX.XX% test accuracy after X epochs
 '''
@@ -14,7 +14,7 @@ from keras.datasets import mnist
 from keras.models import Sequential
 from keras.layers.core import Dense, Activation
 #from keras.optimizers import SGD
-from keras.layers import LSTM
+from recurrent_v import LSTMV
 from keras.utils import np_utils
 
 batch_size = 32 #128
@@ -40,7 +40,7 @@ Y_test = np_utils.to_categorical(y_test, nb_classes)
 
 #Build neural network model. 
 model = Sequential()
-model.add(LSTM(100, input_shape=(784, 1)))
+model.add(LSTMV(100, input_shape=(784, 1)))
 model.add(Dense(10))
 model.add(Activation('softmax'))
 
