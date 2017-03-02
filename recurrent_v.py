@@ -838,7 +838,6 @@ class LSTMV(Recurrent):
         B_W = states[3]
 
         if self.consume_less == 'gpu':
-            #Added 0 multiplication to make variant have no input signal
             z = K.dot(x * B_W[0], self.W) + K.dot(h_tm1 * B_U[0], self.U) + self.b
 
             z0 = z[:, :self.output_dim]
@@ -857,18 +856,18 @@ class LSTMV(Recurrent):
                 x_c = x[:, 2 * self.output_dim: 3 * self.output_dim]
                 x_o = x[:, 3 * self.output_dim:]
             elif self.consume_less == 'mem':
-                x_i = K.dot(x * B_W[0], self.W_i) + self.b_i
-                x_f = K.dot(x * B_W[1], self.W_f) + self.b_f
+                #Added 0 multiplication to make variant have no input signal
+                x_i = K.dot(0*x * B_W[0], self.W_i) + self.b_i
+                x_f = K.dot(0*x * B_W[1], self.W_f) + self.b_f
                 x_c = K.dot(x * B_W[2], self.W_c) + self.b_c
-                x_o = K.dot(x * B_W[3], self.W_o) + self.b_o
+                x_o = K.dot(0*x * B_W[3], self.W_o) + self.b_o
             else:
                 raise ValueError('Unknown `consume_less` mode.')
 
-            #Added 0 multiplication to make variant have no input signal
-            i = self.inner_activation(0*x_i + K.dot(h_tm1 * B_U[0], self.U_i))
-            f = self.inner_activation(0*x_f + K.dot(h_tm1 * B_U[1], self.U_f))
+            i = self.inner_activation(x_i + K.dot(h_tm1 * B_U[0], self.U_i))
+            f = self.inner_activation(x_f + K.dot(h_tm1 * B_U[1], self.U_f))
             c = f * c_tm1 + i * self.activation(x_c + K.dot(h_tm1 * B_U[2], self.U_c))
-            o = self.inner_activation(0*x_o + K.dot(h_tm1 * B_U[3], self.U_o))
+            o = self.inner_activation(x_o + K.dot(h_tm1 * B_U[3], self.U_o))
 
         h = o * self.activation(c)
         return h, [h, c]
