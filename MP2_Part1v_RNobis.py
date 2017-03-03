@@ -13,7 +13,7 @@ from keras.datasets import mnist
 #from keras.preprocessing import sequence
 from keras.models import Sequential
 from keras.layers.core import Dense, Activation, Dropout
-#from keras.optimizers import SGD
+from keras.optimizers import SGD
 from recurrent_v import LSTMV
 from keras.utils import np_utils
 
@@ -47,8 +47,9 @@ model.add(Activation('softmax'))
 
 model.summary()
 
+sgd = SGD(lr=1e-4, decay=0.0)
 model.compile(loss='categorical_crossentropy',
-              optimizer='adam',
+              optimizer=sgd,
               metrics=['accuracy'])
 
 history = model.fit(X_train, Y_train,
