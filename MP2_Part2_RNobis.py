@@ -2,7 +2,7 @@
 Trains a LSTM RNN on the MNIST dataset using row wise sequence generation for
 the input.
 
-Gets to XX.XX% test accuracy after X epochs
+Gets to 84.72% test accuracy after 100 epochs
 This file is also used as the baseline for the standard learning rate of 0.1.
 '''
 

@@ -2,7 +2,7 @@
 Trains a LSTM RNN variant (no input signal) on the MNIST dataset using 
 a 196x4 sequence generation for the input.
 
-Gets to XX.XX% test accuracy after X epochs
+Gets to 34.12% test accuracy after 20 epochs
 '''
 
 from __future__ import print_function
