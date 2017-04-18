@@ -1,7 +1,8 @@
-'''ECE885 Mini-Project 2 Part 1
-Trains a LSTM RNN variant (no input signal) on the MNIST dataset using 
-a 196x4 sequence generation for the input.
-Gets to 34.12% test accuracy after 20 epochs
+'''ECE885 Mini-Project 2 Part 2
+Trains a LSTM RNN variant (no input signal) on the MNIST dataset using row wise 
+sequence generation for the input.
+
+Gets to 90.97% test accuracy after 100 epochs
 '''
 
 from __future__ import print_function
@@ -13,23 +14,16 @@ from keras.datasets import mnist
 from keras.models import Sequential
 from keras.layers.core import Dense, Activation, Dropout
 from keras.optimizers import SGD
-from recurrent_v import LSTM1
+from recurrent_v import GRU2
 from keras.utils import np_utils
 
 batch_size = 32 #128
 nb_classes = 10
-nb_epoch = 20
+nb_epoch = 100
 
 # the data, shuffled and split between train and test sets
 (X_train, y_train), (X_test, y_test) = mnist.load_data()
 
-#Reshape input data to 784 pointwise
-X_train = X_train.reshape(60000, 196, 4)
-X_test = X_test.reshape(10000, 196, 4)
-X_train = X_train.astype('float32')
-X_test = X_test.astype('float32')
-X_train /= 255
-X_test /= 255
 print(X_train.shape[0], 'train samples')
 print(X_test.shape[0], 'test samples')
 
@@ -39,14 +33,14 @@ Y_test = np_utils.to_categorical(y_test, nb_classes)
 
 #Build neural network model. 
 model = Sequential()
-model.add(LSTM1(100, input_shape=(196, 4)), consume_less='mem')
+model.add(GRU2(50, input_shape=(28,28),consume_less='mem'))
 model.add(Dropout(0.2))
 model.add(Dense(10))
 model.add(Activation('softmax'))
 
 model.summary()
 
-sgd = SGD(lr=1e-4, decay=0.0)
+sgd = SGD(lr=1e-3, decay=0.0)
 model.compile(loss='categorical_crossentropy',
               optimizer=sgd,
               metrics=['accuracy'])
