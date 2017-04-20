@@ -58,7 +58,7 @@ X_test = X_test.reshape(X_test.shape[0],1,X_test.shape[1])
                                             
 #Build neural network model. 
 model = Sequential()
-model.add(GRU2(100, input_shape=(1,53), consume_less='mem'))
+model.add(GRU2(500, input_shape=(1,53), consume_less='mem'))
 model.add(Dropout(0.2))
 model.add(Dense(nb_classes))
 model.add(Activation('softmax'))
