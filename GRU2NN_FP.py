@@ -49,8 +49,11 @@ print(X_train.shape[0], 'train samples')
 print(X_test.shape[0], 'test samples')
 
 # convert class vectors to binary class matrices
-Y_train = np_utils.to_categorical(y_train, nb_classes)
-Y_test = np_utils.to_categorical(y_test, nb_classes)
+#Y_train = np_utils.to_categorical(y_train, nb_classes)
+#Y_test = np_utils.to_categorical(y_test, nb_classes)
+Y_train = y_train
+Y_test = y_test
+
 
 #Reshape data to 3 dimensions (time step = 1)
 X_train = X_train.reshape(X_train.shape[0],1,X_train.shape[1])
@@ -58,15 +61,15 @@ X_test = X_test.reshape(X_test.shape[0],1,X_test.shape[1])
                                             
 #Build neural network model. 
 model = Sequential()
-model.add(GRU2(100, input_shape=(1,53), consume_less='mem'))
+model.add(GRU2(10, input_shape=(1,53), consume_less='mem'))
 model.add(Dropout(0.2))
-model.add(Dense(nb_classes))
-model.add(Activation('softmax'))
+model.add(Dense(1))
+#model.add(Activation('softmax'))
 
 model.summary()
 
 sgd = SGD(lr=0.01, decay=0.0, momentum=0.01)
-model.compile(loss='categorical_crossentropy',
+model.compile(loss='mean_squared_error',
               optimizer=sgd,
               metrics=['accuracy'])
 
