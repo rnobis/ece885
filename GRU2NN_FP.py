@@ -49,9 +49,10 @@ print(X_train.shape[0], 'train samples')
 print(X_test.shape[0], 'test samples')
 
 # convert class vectors to binary class matrices
-Y_train = np_utils.to_categorical(y_train, nb_classes)
-Y_test = np_utils.to_categorical(y_test, nb_classes)
-
+#Y_train = np_utils.to_categorical(y_train, nb_classes)
+#Y_test = np_utils.to_categorical(y_test, nb_classes)
+Y_train = y_train
+Y_test = y_test
 
 
 #Reshape data to 3 dimensions (time step = 1)
