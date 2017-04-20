@@ -1,8 +1,8 @@
-'''ECE885 Mini-Project 2 Part 2
-Trains a LSTM RNN variant (no input signal) on the MNIST dataset using row wise 
-sequence generation for the input.
+'''GRU2 Test
+Trains a GRU RNN variant (no input signal, no bias) on the MNIST dataset using 
+row wise sequence generation for the input.
 
-Gets to 90.97% test accuracy after 100 epochs
+Gets to 90.36% test accuracy after 100 epochs
 '''
 
 from __future__ import print_function
