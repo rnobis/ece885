@@ -70,7 +70,7 @@ model.add(Dense(1))
 
 model.summary()
 
-sgd = SGD(lr=0.1, decay=0.0, momentum=0.01)
+sgd = SGD(lr=0.001, decay=0.0)
 model.compile(loss='mean_squared_error',
               optimizer=sgd,
               metrics=['accuracy'])
