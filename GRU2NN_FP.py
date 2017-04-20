@@ -17,8 +17,8 @@ from keras.optimizers import SGD
 from recurrent_v import GRU2
 from keras.utils import np_utils
 
-batch_size = 32 #128
-nb_classes = 100000
+batch_size = 1 #128
+#nb_classes = 100000
 nb_epoch = 100
 
 #import training data
@@ -60,16 +60,14 @@ X_test = X_test.reshape(X_test.shape[0],1,X_test.shape[1])
                                             
 #Build neural network model. 
 model = Sequential()
-model.add(GRU2(100, input_shape=(1,53), consume_less='mem'))
-model.add(Dropout(0.2))
-model.add(Dense(nb_classes))
-model.add(Activation('softmax'))
+model.add(GRU2(10, input_shape=(1,53), consume_less='mem'))
+model.add(Dense(1))
 
 model.summary()
 
-sgd = SGD(lr=0.001, decay=0.0)
-model.compile(loss='categorical_crossentropy',
-              optimizer=sgd,
+#sgd = SGD(lr=0.001, decay=0.0)
+model.compile(loss='mean_squared_error',
+              optimizer='adam',
               metrics=['accuracy'])
 
 history = model.fit(X_train, Y_train,
