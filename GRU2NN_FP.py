@@ -111,9 +111,9 @@ model.add(Activation('softmax'))
 
 model.summary()
 
-sgd = SGD(lr=0.00001, decay=0.0)
+#sgd = SGD(lr=0.0001, decay=0.0)
 model.compile(loss='categorical_crossentropy',
-              optimizer=sgd,
+              optimizer='adam',
               metrics=['accuracy'])
 
 history = model.fit(X_train, Y_train,
