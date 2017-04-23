@@ -2,8 +2,6 @@
 Trains a GRU RNN variant (no input signal, no bias) on a dataset of 
 Facebook metadata in order to determine the number of comments a particular
 posting will get.
-
-
 '''
 
 from __future__ import print_function
@@ -19,11 +17,11 @@ from keras.utils import np_utils
 
 batch_size = 1 #128
 nb_classes = 10
-nb_epoch = 100
+nb_epoch = 5
 
 #import training data
-trainData = np.genfromtxt('Features_Variant_1.csv', delimiter = ",")
-#trainData = np.genfromtxt('Features_Variant_2.csv', delimiter = ",")
+#trainData = np.genfromtxt('Features_Variant_1.csv', delimiter = ",")
+trainData = np.genfromtxt('Features_Variant_2.csv', delimiter = ",")
 #trainData = np.genfromtxt('Features_Variant_3.csv', delimiter = ",")
 #trainData = np.genfromtxt('Features_Variant_4.csv', delimiter = ",")
 #trainData = np.genfromtxt('Features_Variant_5.csv', delimiter = ",")
@@ -31,12 +29,12 @@ X_train = trainData[:,0:53]
 y_train = trainData[:,53]
 
 #import test data
-testData = np.genfromtxt('Test_Case_1.csv', delimiter = ",")
+#testData = np.genfromtxt('Test_Case_1.csv', delimiter = ",")
 #testData = np.genfromtxt('Test_Case_1.csv', delimiter = ",")
 #testData = np.genfromtxt('Test_Case_2.csv', delimiter = ",")
 #testData = np.genfromtxt('Test_Case_3.csv', delimiter = ",")
 #testData = np.genfromtxt('Test_Case_4.csv', delimiter = ",")
-#testData = np.genfromtxt('Test_Case_5.csv', delimiter = ",")
+testData = np.genfromtxt('Test_Case_5.csv', delimiter = ",")
 #testData = np.genfromtxt('Test_Case_6.csv', delimiter = ",")
 #testData = np.genfromtxt('Test_Case_7.csv', delimiter = ",")
 #testData = np.genfromtxt('Test_Case_8.csv', delimiter = ",")
@@ -111,9 +109,9 @@ model.add(Activation('softmax'))
 
 model.summary()
 
-#sgd = SGD(lr=0.0001, decay=0.0)
+sgd = SGD(lr=0.0001, decay=0.0)
 model.compile(loss='categorical_crossentropy',
-              optimizer='adam',
+              optimizer=sgd,
               metrics=['accuracy'])
 
 history = model.fit(X_train, Y_train,
