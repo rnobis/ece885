@@ -18,19 +18,20 @@ from keras.utils import np_utils
 batch_size = 1 
 nb_classes = 10
 nb_epoch = 5
+score = np.zeros(shape=(5,2))
 
 #Run RNN on each training dataset
-for j in range (1, 5):
+for j in range (0, 5):
     #import training data
-    if j == 1:
+    if j == 0:
         trainData = np.genfromtxt('Features_Variant_1.csv', delimiter = ",")
-    elif j == 2:
+    elif j == 1:
         trainData = np.genfromtxt('Features_Variant_2.csv', delimiter = ",")
-    elif j == 3:
+    elif j == 2:
         trainData = np.genfromtxt('Features_Variant_3.csv', delimiter = ",")
-    elif j == 4:
+    elif j == 3:
         trainData = np.genfromtxt('Features_Variant_4.csv', delimiter = ",")
-    elif j == 5:
+    elif j == 4:
         trainData = np.genfromtxt('Features_Variant_5.csv', delimiter = ",")
         
     X_train = trainData[:,0:53]
@@ -137,6 +138,8 @@ for j in range (1, 5):
     history = model.fit(X_train, Y_train,
                         batch_size=batch_size, nb_epoch=nb_epoch,
                         verbose=1, validation_data=(X_test, Y_test))
-    score = model.evaluate(X_test, Y_test, verbose=0)
-    print('Test score:', score[0])
-    print('Test accuracy:', score[1])
+    score[j] = model.evaluate(X_test, Y_test, verbose=0)
+
+for j in range (0, 5):
+    print('Test Score {}: {}'.format(j + 1, score[j,0]))
+    print('Test Accuracy {}: {}'.format(j + 1,score[j,1]))
