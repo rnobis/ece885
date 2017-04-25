@@ -1,4 +1,4 @@
-'''ECE885 Final Project
+'''GRU2 Facebook Commetns
 Trains a GRU RNN variant (no input signal, no bias) on a dataset of 
 Facebook metadata in order to determine the number of comments a particular
 posting will get.
@@ -22,6 +22,7 @@ score = np.zeros(shape=(5,2))
 
 #Run RNN on each training dataset
 for j in range (0, 5):
+    print('\nTrain on Dataset {}'.format(j+1))
     #import training data
     if j == 0:
         trainData = np.genfromtxt('Features_Variant_1.csv', delimiter = ",")

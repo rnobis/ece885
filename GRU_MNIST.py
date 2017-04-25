@@ -1,8 +1,8 @@
-'''GRU2 Test
-Trains a GRU RNN variant (no input signal, no bias) on the MNIST dataset using 
+'''GRU Test
+Trains a GRU RNN on the MNIST dataset using 
 row wise sequence generation for the input.
 
-Gets to 90.36% test accuracy after 100 epochs
+Gets to XX.XX% test accuracy after 100 epochs
 '''
 
 from __future__ import print_function
@@ -14,10 +14,10 @@ from keras.datasets import mnist
 from keras.models import Sequential
 from keras.layers.core import Dense, Activation, Dropout
 from keras.optimizers import SGD
-from recurrent_v import GRU2
+from keras.layers import GRU
 from keras.utils import np_utils
 
-batch_size = 32 #128
+batch_size = 32 
 nb_classes = 10
 nb_epoch = 100
 
@@ -33,7 +33,7 @@ Y_test = np_utils.to_categorical(y_test, nb_classes)
 
 #Build neural network model. 
 model = Sequential()
-model.add(GRU2(50, input_shape=(28,28),consume_less='mem'))
+model.add(GRU(50, input_shape=(28,28),consume_less='mem'))
 model.add(Dropout(0.2))
 model.add(Dense(10))
 model.add(Activation('softmax'))
