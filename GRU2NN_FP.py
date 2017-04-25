@@ -15,31 +15,43 @@ from keras.optimizers import SGD
 from recurrent_v import GRU2
 from keras.utils import np_utils
 
-batch_size = 1 #128
+batch_size = 1 
 nb_classes = 10
 nb_epoch = 5
 
 #import training data
-#trainData = np.genfromtxt('Features_Variant_1.csv', delimiter = ",")
-trainData = np.genfromtxt('Features_Variant_2.csv', delimiter = ",")
+trainData = np.genfromtxt('Features_Variant_1.csv', delimiter = ",")
+#trainData = np.genfromtxt('Features_Variant_2.csv', delimiter = ",")
 #trainData = np.genfromtxt('Features_Variant_3.csv', delimiter = ",")
 #trainData = np.genfromtxt('Features_Variant_4.csv', delimiter = ",")
 #trainData = np.genfromtxt('Features_Variant_5.csv', delimiter = ",")
 X_train = trainData[:,0:53]
 y_train = trainData[:,53]
 
-#import test data
-#testData = np.genfromtxt('Test_Case_1.csv', delimiter = ",")
-#testData = np.genfromtxt('Test_Case_1.csv', delimiter = ",")
-#testData = np.genfromtxt('Test_Case_2.csv', delimiter = ",")
-#testData = np.genfromtxt('Test_Case_3.csv', delimiter = ",")
-#testData = np.genfromtxt('Test_Case_4.csv', delimiter = ",")
-testData = np.genfromtxt('Test_Case_5.csv', delimiter = ",")
-#testData = np.genfromtxt('Test_Case_6.csv', delimiter = ",")
-#testData = np.genfromtxt('Test_Case_7.csv', delimiter = ",")
-#testData = np.genfromtxt('Test_Case_8.csv', delimiter = ",")
-#testData = np.genfromtxt('Test_Case_9.csv', delimiter = ",")
-#testData = np.genfromtxt('Test_Case_10.csv', delimiter = ",")
+#randomly select test data to import
+rtd = np.random.random_integers(1,high=10)
+
+if rtd == 1:
+    testData = np.genfromtxt('Test_Case_1.csv', delimiter = ",")
+elif rtd == 2:
+    testData = np.genfromtxt('Test_Case_2.csv', delimiter = ",")
+elif rtd == 3:
+    testData = np.genfromtxt('Test_Case_3.csv', delimiter = ",")
+elif rtd == 4:
+    testData = np.genfromtxt('Test_Case_4.csv', delimiter = ",")
+elif rtd == 5:
+    testData = np.genfromtxt('Test_Case_5.csv', delimiter = ",")
+elif rtd == 6:
+    testData = np.genfromtxt('Test_Case_6.csv', delimiter = ",")
+elif rtd == 7:
+    testData = np.genfromtxt('Test_Case_7.csv', delimiter = ",")
+elif rtd == 8:
+    testData = np.genfromtxt('Test_Case_8.csv', delimiter = ",")
+elif rtd == 9:
+    testData = np.genfromtxt('Test_Case_9.csv', delimiter = ",")
+elif rtd == 10:
+    testData = np.genfromtxt('Test_Case_10.csv', delimiter = ",")
+    
 X_test = testData[:,0:53]
 y_test = testData[:,53]
 
