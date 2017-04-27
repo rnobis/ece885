@@ -1,6 +1,24 @@
 '''GRU Facebook Comments
 Trains a GRU RNN on a dataset of Facebook metadata in order to determine 
 the number of comments a particular posting will get.
+
+Test Score 1: 1.74405807495
+Test Accuracy 1: 0.39
+Time 1: 161 s
+Test Score 2: 1.83998017311
+Test Accuracy 2: 0.31
+Time 2: 334 s
+Test Score 3: 1.91086606503
+Test Accuracy 3: 0.29
+Time 3: 470 s
+Test Score 4: 1.75766037464
+Test Accuracy 4: 0.39
+Time 4: 651 s
+Test Score 5: 1.82108680725
+Test Accuracy 5: 0.3
+Time 5: 790 s
+
+Total Time: 2402 s
 '''
 
 from __future__ import print_function
@@ -38,7 +56,7 @@ for j in range (0, 5):
     y_train = trainData[:,53]
 
     #randomly select test data to import
-    rtd = np.random.random_integers(1,high=10)
+    rtd = np.random.randint(1, 11)
 
     if rtd == 1:
         testData = np.genfromtxt('Test_Case_1.csv', delimiter = ",")
@@ -133,7 +151,7 @@ for j in range (0, 5):
     sgd = SGD(lr=0.0001, decay=0.0)
     model.compile(loss='categorical_crossentropy',
                   optimizer=sgd,
-                  metrics=['accuracy'])
+                  metrics=['accuracy', 'mae'])
 
     history = model.fit(X_train, Y_train,
                         batch_size=batch_size, nb_epoch=nb_epoch,
