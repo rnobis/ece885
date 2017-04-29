@@ -19,7 +19,7 @@ from recurrent_v import GRU2
 
 batch_size = 1 
 nb_epoch = 3
-score = np.zeros(shape=(5,2))
+score = np.zeros(shape=(5,3))
 
 #Run RNN on each training dataset
 for j in range (0, 5):

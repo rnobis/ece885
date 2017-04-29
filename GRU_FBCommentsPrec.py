@@ -1,25 +1,24 @@
-'''GRU2 Facebook Commetns
-Trains a GRU RNN variant (no input signal, no bias) on a dataset of 
-Facebook metadata in order to determine the number of comments a particular
-posting will get. The following scores and accuracies were 
+'''GRU Facebook Comments
+Trains a GRU RNN on a dataset of Facebook metadata in order to determine 
+the number of comments a particular posting will get.
 
-Test Score 1: 1.74735757351
+Test Score 1: 1.74405807495
 Test Accuracy 1: 0.39
-Time 1: 141 s
-Test Score 2: 1.83801235199
+Time 1: 161 s
+Test Score 2: 1.83998017311
 Test Accuracy 2: 0.31
-Time 2: 281 s
-Test Score 3: 1.93433492184
+Time 2: 334 s
+Test Score 3: 1.91086606503
 Test Accuracy 3: 0.29
-Time 3: 438 s
-Test Score 4: 1.74950072289
+Time 3: 470 s
+Test Score 4: 1.75766037464
 Test Accuracy 4: 0.39
-Time 4: 630 s
-Test Score 5: 1.87029436111
+Time 4: 651 s
+Test Score 5: 1.82108680725
 Test Accuracy 5: 0.3
-Time 5: 786 s
+Time 5: 790 s
 
-Total Time: 2276 s
+Total Time: 2402 s
 '''
 
 from __future__ import print_function
@@ -28,10 +27,9 @@ np.random.seed(1337)  # for reproducibility
 
 #from keras.preprocessing import sequence
 from keras.models import Sequential
-from keras.layers.core import Dense, Activation, Dropout
+from keras.layers.core import Dense, Dropout
 from keras.optimizers import SGD
-from recurrent_v import GRU2
-from keras.utils import np_utils
+from keras.layers import GRU
 
 batch_size = 1 
 nb_classes = 10
@@ -54,7 +52,7 @@ for j in range (0, 5):
         trainData = np.genfromtxt('Features_Variant_5.csv', delimiter = ",")
         
     X_train = trainData[:,0:53]
-    y_train = trainData[:,53]
+    Y_train = trainData[:,53]
 
     #randomly select test data to import
     rtd = np.random.randint(1, 11)
@@ -81,60 +79,10 @@ for j in range (0, 5):
         testData = np.genfromtxt('Test_Case_10.csv', delimiter = ",")
     
     X_test = testData[:,0:53]
-    y_test = testData[:,53]
+    Y_test = testData[:,53]
 
     print(X_train.shape[0], 'train samples')
     print(X_test.shape[0], 'test samples')
-
-    #Reclassify Output Data to range of comments
-    i = 0
-    for i in range (0, y_train.shape[0]):
-        if y_train[i] == 0:
-            y_train[i] = 1
-        elif y_train[i] > 0 and y_train[i] < 5:
-            y_train[i] = 2
-        elif y_train[i] >= 5 and y_train[i] < 10:
-            y_train[i] = 3
-        elif y_train[i] >= 10 and y_train[i] < 50:
-            y_train[i] = 4
-        elif y_train[i] >= 50 and y_train[i] < 100:
-            y_train[i] = 5
-        elif y_train[i] >= 100 and y_train[i] < 500:
-            y_train[i] = 6
-        elif y_train[i] >= 500 and y_train[i] < 1000:
-            y_train[i] = 7
-        elif y_train[i] >= 1000 and y_train[i] < 5000:
-            y_train[i] = 8
-        elif y_train[i] >= 5000 and y_train[i] < 10000:
-            y_train[i] = 9
-        elif y_train[i] >= 10000:
-            y_train[i] = 10
-               
-    for i in range (0, y_test.shape[0]):
-        if y_test[i] == 0:
-            y_test[i] = 1
-        elif y_test[i] > 0 and y_test[i] < 5:
-            y_test[i] = 2
-        elif y_test[i] >= 5 and y_test[i] < 10:
-            y_test[i] = 3
-        elif y_test[i] >= 10 and y_test[i] < 50:
-            y_test[i] = 4
-        elif y_test[i] >= 50 and y_test[i] < 100:
-            y_test[i] = 5
-        elif y_test[i] >= 100 and y_test[i] < 500:
-            y_test[i] = 6
-        elif y_test[i] >= 500 and y_test[i] < 1000:
-            y_test[i] = 7
-        elif y_test[i] >= 1000 and y_test[i] < 5000:
-            y_test[i] = 8
-        elif y_test[i] >= 5000 and y_test[i] < 10000:
-            y_test[i] = 9
-        elif y_test[i] >= 10000:
-            y_test[i] = 10
-
-    # convert class vectors to binary class matrices
-    Y_train = np_utils.to_categorical(y_train, nb_classes)
-    Y_test = np_utils.to_categorical(y_test, nb_classes)
 
     #Reshape data to 3 dimensions (time step = 1)
     X_train = X_train.reshape(X_train.shape[0],1,X_train.shape[1])
@@ -142,15 +90,14 @@ for j in range (0, 5):
                                             
     #Build neural network model. 
     model = Sequential()
-    model.add(GRU2(25, input_shape=(1,53), consume_less='mem'))
+    model.add(GRU(10, input_shape=(1,53), consume_less='mem'))
     model.add(Dropout(0.2))
-    model.add(Dense(nb_classes))
-    model.add(Activation('softmax'))
+    model.add(Dense(1))
     
     model.summary()
 
     sgd = SGD(lr=0.0001, decay=0.0)
-    model.compile(loss='categorical_crossentropy',
+    model.compile(loss='mean_squared_error',
                   optimizer=sgd,
                   metrics=['accuracy', 'mae'])
 
