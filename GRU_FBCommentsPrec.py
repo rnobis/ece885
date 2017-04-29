@@ -81,8 +81,7 @@ for j in range (0, 5):
     
     model.summary()
 
-    #sgd = SGD(lr=0.0001, decay=0.0)
-    model.compile(loss='mean_squared_error',
+    model.compile(loss='mean_absolute_error',
                   optimizer='adam',
                   metrics=['accuracy', 'mae'])
 
