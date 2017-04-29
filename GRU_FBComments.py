@@ -34,7 +34,7 @@ from keras.utils import np_utils
 
 batch_size = 1 
 nb_classes = 10
-nb_epoch = 5
+nb_epoch = 3
 score = np.zeros(shape=(5,2))
 
 #Run RNN on each training dataset
