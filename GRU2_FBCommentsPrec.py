@@ -81,9 +81,9 @@ for j in range (0, 5):
     
     model.summary()
 
-    sgd = SGD(lr=0.0001, decay=0.0)
+    #sgd = SGD(lr=0.0001, decay=0.0)
     model.compile(loss='mean_squared_error',
-                  optimizer=sgd,
+                  optimizer='adam',
                   metrics=['accuracy', 'mae'])
 
     history = model.fit(X_train, Y_train,
@@ -94,4 +94,4 @@ for j in range (0, 5):
 for j in range (0, 5):
     print('Test Score {}: {}'.format(j + 1, score[j,0]))
     print('Test Accuracy {}: {}'.format(j + 1,score[j,1]))
-    print('MAE {}:'.format(j + 1,score[j,2]))
+    print('MAE {}: {}'.format(j + 1,score[j,2]))

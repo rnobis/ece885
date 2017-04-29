@@ -1,24 +1,9 @@
 '''GRU Facebook Comments
 Trains a GRU RNN on a dataset of Facebook metadata in order to determine 
-the number of comments a particular posting will get.
+the number of comments a particular posting will get. This version tries 
+to guess the exact number of posts. These were the scores, accuracies, 
+and MAE for each data set:
 
-Test Score 1: 1.74405807495
-Test Accuracy 1: 0.39
-Time 1: 161 s
-Test Score 2: 1.83998017311
-Test Accuracy 2: 0.31
-Time 2: 334 s
-Test Score 3: 1.91086606503
-Test Accuracy 3: 0.29
-Time 3: 470 s
-Test Score 4: 1.75766037464
-Test Accuracy 4: 0.39
-Time 4: 651 s
-Test Score 5: 1.82108680725
-Test Accuracy 5: 0.3
-Time 5: 790 s
-
-Total Time: 2402 s
 '''
 
 from __future__ import print_function
@@ -96,9 +81,9 @@ for j in range (0, 5):
     
     model.summary()
 
-    sgd = SGD(lr=0.0001, decay=0.0)
+    #sgd = SGD(lr=0.0001, decay=0.0)
     model.compile(loss='mean_squared_error',
-                  optimizer=sgd,
+                  optimizer='adam',
                   metrics=['accuracy', 'mae'])
 
     history = model.fit(X_train, Y_train,
@@ -109,4 +94,4 @@ for j in range (0, 5):
 for j in range (0, 5):
     print('Test Score {}: {}'.format(j + 1, score[j,0]))
     print('Test Accuracy {}: {}'.format(j + 1,score[j,1]))
-    print('MAE {}:'.format(j + 1,score[j,2]))
+    print('MAE {}: {}'.format(j + 1,score[j,2]))

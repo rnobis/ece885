@@ -1,7 +1,7 @@
 '''GRU2 Facebook Commetns
 Trains a GRU RNN variant (no input signal, no bias) on a dataset of 
 Facebook metadata in order to determine the number of comments a particular
-posting will get. The following scores and accuracies were 
+posting will get. These were the scores, accuracies, and MAE for each data set:
 
 Test Score 1: 1.74735757351
 Test Accuracy 1: 0.39
@@ -162,4 +162,4 @@ for j in range (0, 5):
 for j in range (0, 5):
     print('Test Score {}: {}'.format(j + 1, score[j,0]))
     print('Test Accuracy {}: {}'.format(j + 1,score[j,1]))
-    print('MAE {}:'.format(j + 1,score[j,2]))
+    print('MAE {}: {}'.format(j + 1,score[j,2]))
