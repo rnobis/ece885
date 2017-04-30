@@ -75,13 +75,13 @@ for j in range (0, 5):
                                             
     #Build neural network model. 
     model = Sequential()
-    model.add(GRU(10, input_shape=(1,53), consume_less='mem'))
+    model.add(GRU(20, input_shape=(1,53), consume_less='mem'))
     #model.add(Dropout(0.2))
     model.add(Dense(1))
     
     model.summary()
 
-    model.compile(loss='poisson',
+    model.compile(loss='mean_absolute_error',
                   optimizer='adam',
                   metrics=['accuracy', 'mae'])
 
