@@ -82,7 +82,7 @@ for j in range (0, 5):
     model.summary()
 
     model.compile(loss='mean_absolute_error',
-                  optimizer='adamax',
+                  optimizer='nadam',
                   metrics=['accuracy', 'mae'])
 
     history = model.fit(X_train, Y_train,
