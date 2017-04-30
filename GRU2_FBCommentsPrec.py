@@ -4,6 +4,30 @@ Facebook metadata in order to determine the number of comments a particular
 posting will get. This version tries to guess the exact number of posts.
 These were the scores, accuracies, and MAE for each data set:
 
+Test Score 1: 39.7425119019
+Test Accuracy 1: 0.39
+MAE 1: 39.7425119019
+Time 1: 103 s
+
+Test Score 2: 39.7515147591
+Test Accuracy 2: 0.39
+MAE 2: 39.7515147591
+Time 2: 202 s
+    
+Test Score 3: 13.4157876587
+Test Accuracy 3: 0.39
+MAE 3: 13.4157876587
+Time 3: 312 s
+    
+Test Score 4: 17.1435633087
+Test Accuracy 4: 0.31
+MAE 4: 17.1435633087
+Time 4: 422 s
+    
+Test Score 5: 23.5933046722
+Test Accuracy 5: 0.43
+MAE 5: 23.5933046722
+Time 5: 523 s
 
 '''
 

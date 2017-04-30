@@ -4,6 +4,31 @@ the number of comments a particular posting will get. This version tries
 to guess the exact number of posts. These were the scores, accuracies, 
 and MAE for each data set:
 
+Test Score 1: 39.7437745285
+Test Accuracy 1: 0.39
+MAE 1: 39.7437745285
+Time 1: 105 s
+    
+Test Score 2: 39.7295882034
+Test Accuracy 2: 0.34
+MAE 2: 39.7295882034
+Time 2: 213 s 
+    
+Test Score 3: 13.4239599609
+Test Accuracy 3: 0.4
+MAE 3: 13.4239599609
+Time 3: 406 s
+    
+Test Score 4: 17.0728739166
+Test Accuracy 4: 0.3
+MAE 4: 17.0728739166
+Time 4: 484 s
+    
+Test Score 5: 23.5908592987
+Test Accuracy 5: 0.43
+MAE 5: 23.5908592987
+Time 5: 549 s
+
 '''
 
 from __future__ import print_function
