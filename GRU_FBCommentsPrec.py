@@ -81,8 +81,8 @@ for j in range (0, 5):
     
     model.summary()
 
-    model.compile(loss='mean_absolute_error',
-                  optimizer='nadam',
+    model.compile(loss='mean_absolute_percentage_error',
+                  optimizer='adam',
                   metrics=['accuracy', 'mae'])
 
     history = model.fit(X_train, Y_train,
