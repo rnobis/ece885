@@ -81,7 +81,7 @@ for j in range (0, 5):
     
     model.summary()
 
-    model.compile(loss='mean_absolute_percentage_error',
+    model.compile(loss='poisson',
                   optimizer='adam',
                   metrics=['accuracy', 'mae'])
 
