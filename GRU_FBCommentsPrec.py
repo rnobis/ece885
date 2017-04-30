@@ -75,14 +75,13 @@ for j in range (0, 5):
                                             
     #Build neural network model. 
     model = Sequential()
-    model.add(GRU(20, input_shape=(1,53), consume_less='mem'))
+    model.add(GRU(10, input_shape=(1,53), consume_less='mem'))
     model.add(Dense(1))
     
     model.summary()
 
-    sgd = SGD(lr=0.0001, decay=0.0)
     model.compile(loss='mean_absolute_error',
-                  optimizer=sgd,
+                  optimizer='adam,
                   metrics=['accuracy', 'mae'])
 
     history = model.fit(X_train, Y_train,
