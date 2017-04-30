@@ -3,6 +3,30 @@ Trains a GRU RNN on a dataset of Facebook metadata in order to determine
 the number of comments a particular posting will get. These were the scores, 
 accuracies, and MAE for each data set:
 
+Test Score 1: 1.74135425568
+Test Accuracy 1: 0.39
+MAE 1: 0.141159918904
+Time 1: 91 s
+    
+Test Score 2: 1.5517353344
+Test Accuracy 2: 0.4
+MAE 2: 0.137814225554
+Time 2: 176 s
+    
+Test Score 3: 1.83949082375
+Test Accuracy 3: 0.3
+MAE 3: 0.147310739756
+Time 3: 271 s
+    
+Test Score 4: 1.68972597122
+Test Accuracy 4: 0.33
+MAE 4: 0.143514326215
+Time 4: 355 s
+    
+Test Score 5: 1.68223619461
+Test Accuracy 5: 0.33
+MAE 5: 0.143772227168
+Time 5: 430 s
 
 '''
 

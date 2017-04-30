@@ -3,23 +3,31 @@ Trains a GRU RNN variant (no input signal, no bias) on a dataset of
 Facebook metadata in order to determine the number of comments a particular
 posting will get. These were the scores, accuracies, and MAE for each data set:
 
-Test Score 1: 1.74735757351
+Test Score 1: 1.75037465572
 Test Accuracy 1: 0.39
-Time 1: 141 s
-Test Score 2: 1.83801235199
-Test Accuracy 2: 0.31
-Time 2: 281 s
-Test Score 3: 1.93433492184
-Test Accuracy 3: 0.29
-Time 3: 438 s
-Test Score 4: 1.74950072289
-Test Accuracy 4: 0.39
-Time 4: 630 s
-Test Score 5: 1.87029436111
-Test Accuracy 5: 0.3
-Time 5: 786 s
+MAE 1: 0.141220680475
+Time 1: 86 s
+    
+Test Score 2: 1.56355534554
+Test Accuracy 2: 0.4
+MAE 2: 0.137857323289
+Time 2: 171 s
+    
+Test Score 3: 1.85107513428
+Test Accuracy 3: 0.3
+MAE 3: 0.147428129911
+Time 3: 265 s
+    
+Test Score 4: 1.70056547165
+Test Accuracy 4: 0.33
+MAE 4: 0.143869489431
+Time 4: 337 s
+    
+Test Score 5: 1.68858473778
+Test Accuracy 5: 0.33
+MAE 5: 0.143681887388
+Time 5: 416 s
 
-Total Time: 2276 s
 '''
 
 from __future__ import print_function
