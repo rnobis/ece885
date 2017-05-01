@@ -1,0 +1,25 @@
+This folder contains the files for my ECE885 Final Project.
+
+GRU_FBComments.py
+This file runs the GRU RNN on all 5 dataset variants and attempts classifies them to one of the ranges of 
+Facebook comments.
+
+GRU2_FBComments.py
+This file runs the GRU variant 2 RNN on all 5 dataset variants and attempts classifies them to one of the 
+ranges of Facebook comments.
+
+GRU_FBCommentsPrec.py
+This files runs the GRU RNN on all 5 dataset variants and attempts to determine the exact number of
+Facebook comments a post will generate.
+
+GRU2_FBCommentsPrec.py
+This files runs the GRU variant 2 RNN on all 5 dataset variants and attempts to determine the exact number 
+of Facebook comments a post will generate.
+
+__init__.py
+This is an initialization file so recurrent_v.py works correctly.
+
+recurrent_v.py
+This file contains the variants of the LSTM and GRU RNNs so that they can be used by Keras.
+Make sure this file and __init__.py are both in the same directy as GRU_FBComments.py, 
+GRU2_FBComments.py, GRU_FBCommentsPrec.py, and GRU2_FBCommentsPrec.py when they are run.
