@@ -11,9 +11,9 @@ import os.path
 #
 #Models of the Circuits, Systems and Neural Networks (CSANN) Lab--MSU
 #
-pth = "C:\Users\salem\LAYERS\NEW1"
+pth = "/home/rnobis/ece885/"
 os.chdir(pth)
-from Variants import LSTM3
+from VariantsV import LSTM3
 #from keras.layers import LSTM
 
 
