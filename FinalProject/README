@@ -23,3 +23,9 @@ recurrent_v.py
 This file contains the variants of the LSTM and GRU RNNs so that they can be used by Keras.
 Make sure this file and __init__.py are both in the same directy as GRU_FBComments.py, 
 GRU2_FBComments.py, GRU_FBCommentsPrec.py, and GRU2_FBCommentsPrec.py when they are run.
+
+Features_Variant_x.csv
+These are the Facebook datasets that the RNNs are trained on.
+
+Test_Case_x.csv
+These are the Facebook datasets that the RNNs are validated on.
